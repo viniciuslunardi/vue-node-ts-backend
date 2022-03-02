@@ -37,6 +37,6 @@ export default class Database {
     }
 
     close(): void {
-        this._connection.close();
+        this._connection.close().then(() => console.log('connection closed'));
     }
 }

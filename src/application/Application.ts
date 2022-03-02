@@ -1,5 +1,6 @@
 import Server from '@src/server/Server';
 import Database from '@src/database/Database';
+import UserController from '@src/controllers/user/UserController';
 
 export default class Application {
     private _server!: Server; // definite assignment assertion
@@ -16,10 +17,9 @@ export default class Application {
         console.info('connecting server');
         this._server = Server.instance;
 
-        const controllers: any = [];
+        const controllers: any = [new UserController(this._server.router)];
 
         this._server.initializeControllers(controllers);
-        this._server.initializeMissingRoutesRedirection();
 
         this._ready = true;
     }
@@ -30,10 +30,5 @@ export default class Application {
 
     get database(): Database {
         return this._database;
-    }
-
-    destroy(): void {
-        this._server?.destroy();
-        this._database.close();
     }
 }

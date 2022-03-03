@@ -38,10 +38,10 @@ jobs:
           mongodb-version: ${{ matrix.mongodb-version }}
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: npm --frozen-lockfile
 
       - name: Run all tests
-        run: yarn test
+        run: npm test:functional
 #
 #      - name: Deploy application
 #        if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}

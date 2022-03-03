@@ -1,6 +1,5 @@
 import './util/module-alias';
 import 'dotenv/config';
-import './util/module-alias';
 
 import Application from '@src/application/Application';
 

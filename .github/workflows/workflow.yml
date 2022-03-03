@@ -41,7 +41,7 @@ jobs:
         run: npm install
 
       - name: Run all tests
-        run: npm test:functional
+        run: npm run test:functional
 #
 #      - name: Deploy application
 #        if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}

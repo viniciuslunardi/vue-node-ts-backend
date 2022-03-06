@@ -10,7 +10,9 @@
     "lint": "eslint ./src ./test --ext .ts",
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
     "test:unit": "jest",
-    "test:functional": "jest --projects ./test --forceExit --runInBand"
+    "test:functional": "jest --projects ./test --forceExit --runInBand",
+    "style:check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
+    "style:fix": "prettier --write 'src/**/*.ts' 'test/**/*.ts'"
   },
   "keywords": [
     "nodejs",
@@ -32,6 +34,7 @@
     "dotenv": "^16.0.0",
     "eslint": "^8.9.0",
     "jest": "^27.5.1",
+    "prettier": "^2.5.1",
     "supertest": "^6.2.2",
     "ts-jest": "^27.1.3",
     "ts-node-dev": "^1.1.8",
@@ -43,6 +46,7 @@
     "express-async-handler": "^1.2.0",
     "http-status": "^1.5.0",
     "module-alias": "^2.2.2",
-    "mongoose": "^6.2.1"
+    "mongoose": "^6.2.1",
+    "typescript": "^4.5.5"
   }
 }

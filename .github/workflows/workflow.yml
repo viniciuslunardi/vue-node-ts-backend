@@ -14,9 +14,7 @@ on:
       - master
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -41,6 +39,11 @@ jobs:
         run: npm install
 
       - name: Run all tests
+        env:
+          MONGO_USER: ${{ secrets.MONGO_USER }}
+          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+          TESTING: ${{ secrets.TESTING }}
+
         run: npm run test:functional
 #
 #      - name: Deploy application

@@ -3,32 +3,27 @@ import Database from '@src/database/Database';
 import UserController from '@src/controllers/user/UserController';
 
 export default class Application {
-    private _server!: Server; // definite assignment assertion
-    private _database!: Database;
+  private _server!: Server; // definite assignment assertion
+  private _database!: Database;
 
-    private _ready = false;
+  public async init(): Promise<void> {
+    console.info('connecting database');
+    this._database = new Database();
+    await this._database.init();
 
+    console.info('connecting server');
+    this._server = Server.instance;
 
-    public async init(): Promise<void> {
-        console.info('connecting database');
-        this._database = new Database();
-        await this._database.init();
+    const controllers: any = [new UserController(this._server.router)];
 
-        console.info('connecting server');
-        this._server = Server.instance;
+    this._server.initializeControllers(controllers);
+  }
 
-        const controllers: any = [new UserController(this._server.router)];
+  get server(): Server {
+    return this._server;
+  }
 
-        this._server.initializeControllers(controllers);
-
-        this._ready = true;
-    }
-
-    get server(): Server {
-        return this._server;
-    }
-
-    get database(): Database {
-        return this._database;
-    }
+  get database(): Database {
+    return this._database;
+  }
 }

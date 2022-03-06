@@ -24,11 +24,15 @@ export default class Database {
 					MONGO_USER: ${MONGO_USER}`
       );
 
-      await mongoose.connect(db_uri, {
-        user: MONGO_USER,
-        pass: MONGO_PASSWORD,
-        authSource: 'admin',
-      });
+      if (process.env.TESTING === 'true') {
+        await mongoose.connect(db_uri, {
+          user: MONGO_USER,
+          pass: MONGO_PASSWORD,
+          authSource: 'admin',
+        });
+      } else {
+        await mongoose.connect(db_uri);
+      }
     } catch (error) {
       console.error(`error connecting to database: ${error}`);
       process.exit(0);

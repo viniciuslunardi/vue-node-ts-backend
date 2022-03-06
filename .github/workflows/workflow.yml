@@ -34,9 +34,7 @@ jobs:
         uses: supercharge/mongodb-github-action@1.1.0
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
-          mongodb-username: ${{ secrets.MONGO_USER }}
-          mongodb-password: ${{ secrets.MONGO_PASSWORD }}
-          mongodb-db: ${{ secrets.MONGO_DATABASE }}
+          mongodb-db: node-ts
 
       - name: Install dependencies
         run: npm install

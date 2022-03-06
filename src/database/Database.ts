@@ -14,6 +14,7 @@ export default class Database {
         ? `mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}`
         : `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@node-ts.bo1hv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
+    console.log(db_uri);
     try {
       console.log(
         `connecting mongo on: \n

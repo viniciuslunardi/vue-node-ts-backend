@@ -4,18 +4,15 @@ export default class Database {
   private _connection!: Connection; // definite assignment assertion
 
   public async init(): Promise<Connection> {
-    const {
-      MONGO_DATABASE,
-      MONGO_HOST,
-      MONGO_PASSWORD,
-      MONGO_PORT,
-      MONGO_USER,
-    } = process.env;
-    
+    let { MONGO_DATABASE, MONGO_HOST, MONGO_PASSWORD, MONGO_PORT, MONGO_USER } =
+      process.env;
+
+    if (!MONGO_PORT) MONGO_PORT = '27017';
+
     const db_uri =
       process.env.TESTING === 'true'
         ? `mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}`
-        : `mongodb+srv://<${MONGO_USER}>:<${MONGO_PASSWORD}>@node-ts.bo1hv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+        : `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@node-ts.bo1hv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
     try {
       console.log(

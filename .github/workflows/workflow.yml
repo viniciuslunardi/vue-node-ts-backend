@@ -34,6 +34,9 @@ jobs:
         uses: supercharge/mongodb-github-action@1.1.0
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
+          mongodb-username: ${{ secrets.MONGO_USER }}
+          mongodb-password: ${{ secrets.MONGO_PASSWORD }}
+          mongodb-db: ${{ secrets.MONGO_DATABASE }}
 
       - name: Install dependencies
         run: npm install
@@ -42,7 +45,10 @@ jobs:
         env:
           MONGO_USER: ${{ secrets.MONGO_USER }}
           MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
-          TESTING: ${{ secrets.TESTING }}
+          MONGO_DATABASE: ${{ secrets.MONGO_DATABASE }}
+          MONGO_HOST: ${{ secrets.MONGO_HOST }}
+          MONGO_PORT: ${{ secrets.MONGO_PORT }}
+        
 
         run: npm run test:functional
 #

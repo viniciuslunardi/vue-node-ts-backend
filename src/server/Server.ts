@@ -1,7 +1,6 @@
 import express, { Request, Response, NextFunction, Router } from 'express';
 import bodyParser from 'body-parser';
 import http from 'http';
-import asyncHandler from 'express-async-handler';
 
 import { errorHandler } from '@src/server/middlewares/Middlewares';
 
@@ -31,7 +30,7 @@ export default class Server {
   }
 
   private initializeMiddlewares() {
-    this.app.use(bodyParser.json())
+    this.app.use(bodyParser.json());
   }
 
   private initializeErrorHandling(): void {

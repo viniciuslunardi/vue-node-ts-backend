@@ -1,6 +1,6 @@
 import BaseController from '@src/controllers/base/BaseController';
 import User from '@src/models/user/interface/User';
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
 
 export default class UserController extends BaseController {
   private _endPointName = 'users';
@@ -15,6 +15,15 @@ export default class UserController extends BaseController {
 
   constructor(router: Router) {
     super(router);
+    this.init();
+  }
+
+  protected init(): void {
     this.initBinds();
+  }
+
+  public initBinds(): void {
+    super.initBinds();
+    console.log('initializing custom routes');
   }
 }

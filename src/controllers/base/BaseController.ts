@@ -9,6 +9,9 @@ export default abstract class BaseController {
 
   abstract getName(): string;
 
+
+  protected abstract init(): void;
+
   protected initBinds(): void {
     this.router.post(`/${this.getName()}`, this.create.bind(this));
     this.router.get(`/${this.getName()}/:id`, this.findById.bind(this));

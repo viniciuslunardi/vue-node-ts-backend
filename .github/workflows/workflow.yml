@@ -34,7 +34,7 @@ jobs:
         uses: supercharge/mongodb-github-action@1.1.0
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
-          
+
       - name: Install dependencies
         run: npm install
 
@@ -49,6 +49,9 @@ jobs:
           # MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
           MONGO_DATABASE: nodets
           MONGO_HOST: localhost
+          MONGO_USER: admin
+          MONGO_PASSWORD: admin
+          TESTING: false
           MONGO_PORT: 27017
         
 
